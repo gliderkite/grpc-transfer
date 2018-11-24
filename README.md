@@ -64,4 +64,29 @@ Both server and client are simple single-threaded applications.
 
 ## How to test
 
-[TODO]
+The project includes a python script with basic unit tests that can be run in
+order to test the client and server functionality. The script can be run as:
+```
+python test/src/grpc_test.py --bin <build artifacts directory> --size <file size>
+```
+For example:
+```
+python test/src/grpc_test.py --bin build/client-server/bin/ --size 100
+```
+Where the bin directory must contain the client and server build artifacts, and
+the size specify the size of the file that will be owned by the server and
+downloaded by the client during the test. The test will assert that the file is
+correctly downloaded and the content is the same of the original.
+
+Please note that in order to run the tests you need to build the project first.
+
+
+## Possible improvements
+
+- Make the server an asynchronous application able to serve multiple clients at
+    the same time.
+- Profile server and client, and check where to establish the compromise between
+    memory and performance by tuning the `max_block_size` parameter.
+- Improve the tests by creating a test environment only once for all the suites,
+    and add more tests with new client and server features.
+- Add support for Windows.
