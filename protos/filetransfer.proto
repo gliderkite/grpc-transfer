@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package filetranfer;
+
+service FileTransfer {
+    // Requets a file.
+    rpc file_request (FileRequest) returns (FileResponse) {}
+
+    // Request a block of data of a specific file.
+    rpc block_request (BlockRequest) returns (BlockResponse) {}
+}
+
+message FileRequest {
+    string filename = 1;
+}
+
+message FileResponse {
+    uint64 blocks_count = 1;
+}
+
+message BlockRequest {
+    string filename = 1;
+    uint64 block_index = 2;
+}
+
+message BlockResponse {
+    bytes data = 1;
+}
