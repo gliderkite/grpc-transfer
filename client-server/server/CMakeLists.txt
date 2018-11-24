@@ -9,3 +9,8 @@ set(SOURCES
 
 add_executable(${SERVER} ${SOURCES})
 target_link_libraries(${SERVER} ${GRPC_LIBRARIES})
+
+if(UNIX)
+    target_link_libraries(${SERVER} -lpthread)
+endif()
+
