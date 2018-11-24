@@ -136,8 +136,8 @@ namespace
             const BlockRequest* request,
             BlockResponse* reply) override
         {
-            std::cout << "Requested file block: " << request->filename()
-                << " (" << request->block_index() << ")\n";
+            //std::cout << "Requested file block: " << request->filename()
+                //<< " (" << request->block_index() << ")\n";
 
             const auto block = filesys::read_block_at(
                 request->filename(),

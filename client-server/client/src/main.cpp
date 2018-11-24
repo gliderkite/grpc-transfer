@@ -40,7 +40,7 @@ namespace
 
             if (status.ok())
             {
-                std::cout << "Blocks count: " << response.blocks_count() << std::endl;
+                //std::cout << "Blocks count: " << response.blocks_count() << std::endl;
                 return std::make_pair(response.blocks_count(), true);
             } 
             else 
@@ -69,7 +69,7 @@ namespace
             // Act upon its status.
             if (status.ok())
             {
-                std::cout << "Data: " << response.data() << std::endl;
+                //std::cout << "Data: " << response.data() << std::endl;
                 return std::make_pair(std::move(response.data()), true);
             } 
             else
@@ -98,8 +98,7 @@ namespace
         {
             std::cerr << "Unable to request the file: " << filename << std::endl;
         }
-
-        if (std::ofstream of{filename, std::ios::binary})
+        else if (std::ofstream of{filename, std::ios::binary})
         {
             const auto blocks_count = response.first;
             for (uint64_t i = 0; i < blocks_count; i++)
