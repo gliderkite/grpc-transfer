@@ -8,7 +8,9 @@ application is build on top of the gRPC framework.
 
 The project will require to build the gRPC framework from source, please follow
 the pre-requisites and install all the required dependencies as specified on their
-[building webpage](https://github.com/grpc/grpc/blob/master/BUILDING.md).
+[building webpage](https://github.com/grpc/grpc/blob/master/BUILDING.md). The
+list of pre-requisites will also require you to install other dependencies used
+to build the project such as git, cmake and golang.
 
 Please note that Windows is not completely supported by this project yet.
 
@@ -64,7 +66,7 @@ Both server and client are simple single-threaded applications.
 
 ## How to test
 
-The project includes a python script with basic unit tests that can be run in
+The project includes a python script with basic integration tests that can be run in
 order to test the client and server functionality. The script can be run as:
 ```
 python test/src/grpc_test.py --bin <build artifacts directory> --size <file size>
