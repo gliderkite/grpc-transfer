@@ -108,6 +108,7 @@ namespace
                 if (!block.second)
                 {
                     std::cerr << "Unable to request the block: " << i << std::endl;
+                    break;
                 }
 
                 of.write(&block.first[0], block.first.size());

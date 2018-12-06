@@ -63,28 +63,6 @@ namespace filesys
 
         return std::make_pair(data, false);
     }
-
-    std::pair<std::vector<byte_t>, bool> read_file(const std::string& filename)
-    {
-        std::vector<byte_t> data;
-        std::ifstream file(filename, std::ios::binary);
-        bool is_open = file.is_open();
-
-        if (is_open)
-        {
-            file.unsetf(std::ios::skipws);
-            std::streampos fileSize;
-            file.seekg(0, std::ios::end);
-            fileSize = file.tellg();
-            file.seekg(0, std::ios::beg);
-
-            data.reserve(fileSize);
-            data.insert(data.begin(),
-                std::istream_iterator<byte_t>(file), std::istream_iterator<byte_t>());
-        }
-
-        return std::make_pair(data, is_open);
-    }
 }
 
 
@@ -96,7 +74,6 @@ namespace
     public:
 
         FileTransferServiceImpl()
-            : id{0}
         {
         }
 
@@ -155,8 +132,6 @@ namespace
                 return Status::CANCELLED;
             }
         }
-    
-        uint64_t id;
     };
 
     void run_server(const std::string& server_address)
